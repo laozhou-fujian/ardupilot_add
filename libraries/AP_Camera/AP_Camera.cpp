@@ -671,6 +671,26 @@ bool AP_Camera::set_zoom(uint8_t instance, ZoomType zoom_type, float zoom_value)
     return backend->set_zoom(zoom_type, zoom_value);
 }
 
+// zoom specified as a rate or percentage
+bool AP_Camera::set_thermal_zoom(ZoomType zoom_type, float zoom_value)
+{
+    WITH_SEMAPHORE(_rsem);
+
+    if (primary == nullptr) {
+        return false;
+    }
+    return primary->set_thermal_zoom(zoom_type, zoom_value);
+}
+// zoom specified as a rate or percentage
+bool AP_Camera::set_pseudo_color(float pcolor_value)
+{
+    WITH_SEMAPHORE(_rsem);
+
+    if (primary == nullptr) {
+        return false;
+    }
+    return primary->set_pseudo_color(pcolor_value);
+}
 
 // set focus specified as rate, percentage or auto
 // focus in = -1, focus hold = 0, focus out = 1

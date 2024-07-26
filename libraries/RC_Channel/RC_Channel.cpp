@@ -1029,6 +1029,48 @@ bool RC_Channel::do_aux_function_camera_zoom(const AuxSwitchPos ch_flag)
     return camera->set_zoom(ZoomType::RATE, zoom_step);
 }
 
+bool RC_Channel::do_aux_function_camera_thermal_zoom(const AuxSwitchPos ch_flag)
+{
+    AP_Camera *camera = AP::camera();
+    if (camera == nullptr) {
+        return false;
+    }
+    int8_t zoom_step = 0;   // zoom out = -1, hold = 0, zoom in = 1
+    switch (ch_flag) {
+    case AuxSwitchPos::HIGH:
+        zoom_step = 1;  // zoom in
+        break;
+    case AuxSwitchPos::MIDDLE:
+        zoom_step = 0;  // zoom hold
+        break;
+    case AuxSwitchPos::LOW:
+        zoom_step = -1; // zoom out
+        break;
+    }
+    return camera->set_thermal_zoom(ZoomType::RATE, zoom_step);
+}
+
+bool RC_Channel::do_aux_function_camera_pseudo_color(const AuxSwitchPos ch_flag)
+{
+    AP_Camera *camera = AP::camera();
+    if (camera == nullptr) {
+        return false;
+    }
+    int8_t pcolor_step = 0;   // zoom out = -1, hold = 0, zoom in = 1
+    switch (ch_flag) {
+    case AuxSwitchPos::HIGH:
+        pcolor_step = 1;  // zoom in
+        break;
+    case AuxSwitchPos::MIDDLE:
+        pcolor_step = 0;  // zoom in
+        break;
+    case AuxSwitchPos::LOW:
+        pcolor_step = -1; // zoom out
+        break;
+    }
+    return camera->set_pseudo_color(pcolor_step);
+}
+
 bool RC_Channel::do_aux_function_camera_manual_focus(const AuxSwitchPos ch_flag)
 {
     AP_Camera *camera = AP::camera();
@@ -1633,6 +1675,12 @@ bool RC_Channel::do_aux_function(const AUX_FUNC ch_option, const AuxSwitchPos ch
 
     case AUX_FUNC::CAMERA_IMAGE_TRACKING:
         return do_aux_function_camera_image_tracking(ch_flag);
+
+    case AUX_FUNC::CAMERA_THERMAL_ZOOM: 
+        return do_aux_function_camera_thermal_zoom(ch_flag);
+    
+    case AUX_FUNC::CAMERA_PSEUDO_COLOR: 
+        return do_aux_function_camera_pseudo_color(ch_flag);
 
 #if AP_CAMERA_SET_CAMERA_SOURCE_ENABLED
     case AUX_FUNC::CAMERA_LENS:

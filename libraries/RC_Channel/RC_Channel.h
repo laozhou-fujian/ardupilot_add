@@ -252,7 +252,7 @@ public:
         VFWD_THR_OVERRIDE =  176, // force enabled VTOL forward throttle method
         MOUNT_LRF_ENABLE =   177,  // mount LRF enable/disable
         FLIGHTMODE_PAUSE =   178,  // e.g. pause movement towards waypoint
-
+        
 
         // inputs from 200 will eventually used to replace RCMAP
         ROLL =               201, // roll input
@@ -271,7 +271,8 @@ public:
         MOUNT2_PITCH =       216, // mount3 pitch input
         MOUNT2_YAW =         217, // mount4 yaw input
         LOWEHEISER_THROTTLE= 218,  // allows for throttle on slider
-
+        CAMERA_THERMAL_ZOOM = 219,
+        CAMERA_PSEUDO_COLOR = 220,
         // inputs 248-249 are reserved for the Skybrush fork at
         // https://github.com/skybrush-io/ardupilot
 
@@ -347,6 +348,8 @@ protected:
     void do_aux_function_camera_trigger(const AuxSwitchPos ch_flag);
     bool do_aux_function_record_video(const AuxSwitchPos ch_flag);
     bool do_aux_function_camera_zoom(const AuxSwitchPos ch_flag);
+    bool do_aux_function_camera_thermal_zoom(const AuxSwitchPos ch_flag);
+    bool do_aux_function_camera_pseudo_color(const AuxSwitchPos ch_flag);
     bool do_aux_function_camera_manual_focus(const AuxSwitchPos ch_flag);
     bool do_aux_function_camera_auto_focus(const AuxSwitchPos ch_flag);
     bool do_aux_function_camera_image_tracking(const AuxSwitchPos ch_flag);

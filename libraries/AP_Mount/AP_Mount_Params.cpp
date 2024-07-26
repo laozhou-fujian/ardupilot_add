@@ -172,6 +172,8 @@ const AP_Param::GroupInfo AP_Mount_Params::var_info[] = {
     // @User: Standard
     AP_GROUPINFO("_OPTIONS", 16, AP_Mount_Params, options, 0),
 
+    AP_GROUPINFO("_DEBUG", 17, AP_Mount_Params, mount_debug, 0),
+
     AP_GROUPEND
 };
 

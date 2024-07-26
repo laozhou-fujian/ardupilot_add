@@ -244,6 +244,11 @@ public:
     // set zoom specified as a rate or percentage
     bool set_zoom(uint8_t instance, ZoomType zoom_type, float zoom_value);
 
+    // set zoom specified as a rate or percentage
+    bool set_thermal_zoom(uint8_t instance, ZoomType zoom_type, float zoom_value);
+
+    bool set_pseudo_color(uint8_t instance, float pcolor_value);
+
     // set focus specified as rate, percentage or auto
     // focus in = -1, focus hold = 0, focus out = 1
     SetFocusResult set_focus(uint8_t instance, FocusType focus_type, float focus_value);

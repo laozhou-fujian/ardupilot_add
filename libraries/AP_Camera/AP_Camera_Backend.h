@@ -73,6 +73,11 @@ public:
     // set zoom specified as a rate or percentage
     virtual bool set_zoom(ZoomType zoom_type, float zoom_value) { return false; }
 
+    // set zoom specified as a rate or percentage
+    virtual bool set_thermal_zoom(ZoomType zoom_type, float zoom_value) { return false; }
+
+    virtual bool set_pseudo_color(float pcolor_value) { return false; }
+
     // set focus specified as rate, percentage or auto
     // focus in = -1, focus hold = 0, focus out = 1
     virtual SetFocusResult set_focus(FocusType focus_type, float focus_value) { return SetFocusResult::UNSUPPORTED; }

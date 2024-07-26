@@ -44,6 +44,10 @@ public:
     // set zoom specified as a rate or percentage
     bool set_zoom(ZoomType zoom_type, float zoom_value) override;
 
+    bool set_thermal_zoom(ZoomType zoom_type, float zoom_value) override;
+
+    bool set_pseudo_color(float pcolor_value) override;
+
     // set focus specified as rate, percentage or auto
     // focus in = -1, focus hold = 0, focus out = 1
     SetFocusResult set_focus(FocusType focus_type, float focus_value) override;

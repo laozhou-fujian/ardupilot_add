@@ -36,6 +36,26 @@ bool AP_Camera_Mount::set_zoom(ZoomType zoom_type, float zoom_value)
     return false;
 }
 
+// set zoom specified as a rate or percentage
+bool AP_Camera_Mount::set_thermal_zoom(ZoomType zoom_type, float zoom_value)
+{
+    AP_Mount* mount = AP::mount();
+    if (mount != nullptr) {
+        return mount->set_thermal_zoom(get_mount_instance(), zoom_type, zoom_value);
+    }
+    return false;
+}
+
+// set zoom specified as a rate or percentage
+bool AP_Camera_Mount::set_pseudo_color(float zoom_value)
+{
+    AP_Mount* mount = AP::mount();
+    if (mount != nullptr) {
+        return mount->set_pseudo_color(get_mount_instance(), zoom_value);
+    }
+    return false;
+}
+
 // set focus specified as rate, percentage or auto
 // focus in = -1, focus hold = 0, focus out = 1
 SetFocusResult AP_Camera_Mount::set_focus(FocusType focus_type, float focus_value)
